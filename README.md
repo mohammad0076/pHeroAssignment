@@ -1,32 +1,36 @@
-# Programming Hero (Windows Setup Guide)
+Programming Hero Assignment (Windows Setup Guide) 🚀
+Follow this guide to set up and run the project on Windows, leveraging Appium and Android for a seamless testing environment.
 
-## Prerequisites
-- **Java (JDK)**: Download and install.
-- **IntelliJ IDEA**: Install for code development.
-- **Maven**: Install to manage dependencies.
+📋 Prerequisites
+Ensure the following software is installed on your system:
 
-## Android Tools
-- **Node.js**: Download and install.
-- **Android Studio**: Install for:
-  - IDE and SDK packages.
-  - Generating a virtual device.
+Java (JDK): Required for development. Download JDK
+IntelliJ IDEA: Recommended IDE for code development. Download IntelliJ
+Maven: Used for managing project dependencies. Download Maven
+📲 Android Tools
+Node.js: Required for some Android tools. Download Node.js
+Android Studio:
+Includes IDE, SDK packages, and emulator capabilities.
+Generate an Android Virtual Device (AVD) for testing.
+📱 Android Device Setup
+Device Configuration:
 
-## Android Device Setup
-- **Device Details**:
-  - `deviceName`: "Android"
-  - `platformName`: "Android"
-  - `automationName`: "uiautomator2"
-  - `platformVersion`: "14"
+properties
+Copy code
+deviceName: "Android"
+platformName: "Android"
+automationName: "uiautomator2"
+platformVersion: "14"
+📥 Appium Setup
+Version: Appium v1.17.0
+Additional Apps:
+Install APK Info for viewing APK details.
+Download and install ApiDemo-debug.apk to acquire appPackage and appActivity details.
+🔌 Appium Inspector Configuration
+Use the configuration below to connect to the Android device with Appium Inspector:
 
-## Appium
-- **Version**: v1.17.0
-- **Additional Apps**:
-  - Install `APK Info` to view APK details.
-  - Download & install `ApiDemo-debug.apk` to obtain the app’s package and activity details.
-
-## Appium Inspector Connection
-Use the following configuration for connecting to the Android device with Appium Inspector:
-```json
+json
+Copy code
 {
   "platformName": "Android",
   "appium:automationName": "uiautomator2",
@@ -34,37 +38,46 @@ Use the following configuration for connecting to the Android device with Appium
   "appPackage": "io.appium.android.apis",
   "appActivity": "io.appium.android.apis.ApiDemos"
 }
+🛠️ Project Setup & Execution
+1️⃣ Clone the Repository
+Clone the project repository to your local machine:
 
+bash
+Copy code
+git clone https://github.com/mohammad0076/pHeroAssignment.git
+2️⃣ Run Tests
+Navigate to the project directory and run tests with:
 
-1.##Clone Repository
-Clone the repository to your local machine: git clone https://github.com/mohammad0076/pHeroAssignment.git
-
-
-
-2.##Run Tests:-
+bash
+Copy code
 mvn clean test -X
-Set Up Base Capabilities (Specify APK and device configurations):
+3️⃣ Set Up Base Capabilities
+In your code, specify the following capabilities to configure the APK and device:
 
+java
+Copy code
 cap.setCapability("deviceName", "Android");
 cap.setCapability("platformName", "Android");
 cap.setCapability("automationName", "uiautomator2");
 cap.setCapability("platformVersion", "14");
 cap.setCapability("appPackage", "io.appium.android.apis");
 cap.setCapability("appActivity", "io.appium.android.apis.ApiDemos");
+4️⃣ Resolve Dependency Conflicts
+Open pom.xml in IntelliJ.
+Check for any conflicts or missing dependencies.
+Use the Maven sidebar to install necessary dependencies.
+🧩 Project Structure Overview
+Feature Files: Located in src/test/java/features. These files define test scenarios.
+Step Definitions: Implement steps linked to feature files.
+PageObjectManager: Manages page objects for test actions.
+TestingApp: Contains configurations and initial test setup.
+5️⃣ Run Test Suite
+To execute the test suite, run testing.xml:
 
+bash
+Copy code
+mvn test -Dsurefire.suiteXmlFiles=src/test/resources/testing.xml
+🎥 Demonstration Video
+👉 Watch Test Suite Execution Video
 
-3.##Resolve Dependency Conflicts:
-Open pom.xml.
-Verify dependencies, and install missing ones by using the Maven sidebar on the right.
-
-4.## Test Structure Overview
-Feature Files: Located in src/test/java/features.
-Run individual feature files as needed.
-Step Definitions: Define steps linked to feature files.
-PageObjectManager: Manages page interactions and objects for testing.
-TestingApp: Includes configurations and test setup.
-
-5##Run Test Suite
-Execute the test suite by running testing.xml in XML\testing.xml.
-
-6 ##My suit run video:-https://www.awesomescreenshot.com/video/33435100?key=b0b9b9119914af02568be0f05b6e56e9
+This guide should help you seamlessly set up and run the project on your Windows machine. Happy Testing! 🚀
