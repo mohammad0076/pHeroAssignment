@@ -28,3 +28,12 @@ deviceName: "Android"
 platformName: "Android"
 automationName: "uiautomator2"
 platformVersion: "14"
+
+
+
+📥 Appium Setup
+Appium Version: v1.17.0
+Additional Apps:
+Install APK Info to examine APK details.
+Download and install ApiDemo-debug.apk to obtain appPackage and appActivity information.
+Curious Fact! 🚀 Appium uses a JSON Wire Protocol for communication between the device and the script, making it adaptable for multiple platforms.
