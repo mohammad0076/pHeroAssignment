@@ -222,7 +222,7 @@ public class TestingApp {
                 // Perform drag and hold for 3 seconds
                 new TouchAction(androidDriver)
                         .longPress(PointOption.point(dragElement.getLocation().getX(), dragElement.getLocation().getY()))
-                        .waitAction(waitOptions(ofMillis(300000)))  // Hold for 3 seconds
+                        .waitAction(waitOptions(ofMillis(300)))  // Hold for 3 seconds
                         .moveTo(PointOption.point(dropElement.getLocation().getX(), dropElement.getLocation().getY()))
                         .release()
                         .perform();
