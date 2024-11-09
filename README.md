@@ -146,5 +146,5 @@ This automation strategy with **Cucumber and POM** supports maintainable, readab
 
 
 # 🎥 Demonstration Video
-https://www.awesomescreenshot.com/video/33435100?key=b0b9b9119914af02568be0f05b6e56e9 
+https://github.com/mohammad0076/pHeroAssignment/issues/1 
 
