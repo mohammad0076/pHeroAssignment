@@ -1,173 +1,240 @@
 package pages.AdditionPage;
 
+import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.PerformsTouchActions;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.Arrays;
+
+import static io.appium.java_client.touch.WaitOptions.waitOptions;
+import static java.time.Duration.ofMillis;
 
 public class TestingApp {
 
     public AppiumDriver driver;
-//    public TestingApp testingApp;
 
 
-    By Guest_started = By.id("com.yahoo.mobile.client.android.finance:id/get_started_btn");
-    By Okay_Home = By.id("com.yahoo.mobile.client.android.finance:id/ok");
-    By Account_Button = By.id("com.yahoo.mobile.client.android.finance:id/account");
-    By Account_ok = By.id("com.yahoo.mobile.client.android.finance:id/ok");
-    By Setting = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout/androidx.cardview.widget.CardView[2]/android.widget.LinearLayout");
-    By Notification = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]");
-//    Then Click on High/Low Prices
-//    Then Click on Price Alerts
-//    Then Click on Earning Results
-
-    By High_Low  = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.Switch");
-    By Price_alert  = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]/android.widget.Switch");
-    By Earning  = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]/android.widget.Switch");
-    By Security  = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]");
-    By Autoplay  = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.view.View[4]");
-
-    //    By Autoplay  = By.xpath("");
-
-    By WIFI  = By.xpath("\t\n" + "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ListView/android.widget.TextView[1]");
-    By Audio_with_Screen  = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.view.View[5]");
-    By on_WIFI  = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ListView/android.widget.TextView[1]");
-    By Audio_Chart  = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.view.View[6]");
-    By Off  = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ListView/android.widget.TextView[1]");
-    By Dark_Mode  = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.view.View[7]");
-    By Dark_Mode_On  = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ListView/android.widget.TextView[1]");
-
-    By Regions_and_Curr  = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.view.View[8]");
-    By Market_Region  = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[1]");
-    By Canada  = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]");
-    By Set_Market_Region  = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.widget.ScrollView/android.view.View[2]");
-
-    By Feedback  = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[1]/android.view.View[10]");
-    By Beta_Program  = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[2]");
-    By Cancel  = By.id("com.yahoo.mobile.client.android.finance:id/no_button");
-    By News  = By.id("com.yahoo.mobile.client.android.finance:id/news");
-    By First_News  = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.widget.ScrollView/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[2]/android.view.ViewGroup");
+    By views = By.xpath("//android.widget.TextView[@content-desc=\"Views\"]");
+    By expandable = By.xpath("//android.widget.TextView[@content-desc=\"Expandable Lists\"]");
+    By customAdapter = By.xpath("//android.widget.TextView[@content-desc=\"1. Custom Adapter\"]");
+    By people = By.xpath("/hierarchy/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.ExpandableListView/android.widget.TextView[1]");
+    By simple = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.FrameLayout/android.widget.TextView");
+    By com = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.TextView");
 
 
 
 
 
 
-//    By without_subscribtion = By.id("com.yahoo.mobile.client.android.finance:id/account");
-//    By google_cencel = By.id("com.google.android.gms:id/cancel");
-//    By not_now = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View[2]/android.widget.Button\n");
-//    By continue_button = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.Button\n");
-//    By today_button = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View[1]/android.view.View\n");
-//    By play_button = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View[3]/android.view.View\n");
-//    By section_button = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View[4]/android.view.View\n");
-//    By for_you_button = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View[2]/android.view.View\n");
-//    By search = By.id("Search");
-//    By profile = By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.Button\n");
-//    By popup_cont=By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View[2]/android.widget.Button\n");
-//
-//    By accout_page = By.id("com.nytimes.android:id/toolbar");
-
-
-   public TestingApp(AppiumDriver driver) {
+    public TestingApp(AppiumDriver driver) {
         this.driver = driver;
     }
 
 
-    public WebElement Guest_started() {
-        return driver.findElement(Guest_started);
+    public WebElement views() {
+        return driver.findElement(views);
+    }
+
+    public WebElement com() {
+        return driver.findElement(com);
+    }
+
+    public WebElement customAdapter() {
+        return driver.findElement(customAdapter);
+    }
+
+    public WebElement exp() {
+        return driver.findElement(expandable);
+    }
+
+    public WebElement People() {
+        return driver.findElement(people);
+    }
+
+    public WebElement simple() {
+        return driver.findElement(simple);
+    }
+
+    public WebElement waitForExpandableToBeVisible(int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(expandable));
+    }
+
+    public WebElement drag() {
+        return waitForExpandableToBeVisible(10); //
+    }
+
+    public WebElement expandable() {
+        return waitForExpandableToBeVisible(10); // Example with a 10-second timeout
     }
 
 
-    public WebElement Okay_Home() {
-        return driver.findElement(Okay_Home);
+    public boolean scrollToAndClickElement(By locator) {
+        while (true) {
+            try {
+                // Attempt to locate the element
+                WebElement element = driver.findElement(locator);
+
+                // Check if the element is displayed, then click and return true
+                if (element.isDisplayed()) {
+                    element.click();
+                    System.out.println("Element found and clicked.");
+                    return true;
+                }
+            } catch (Exception e) {
+                // Scroll down if the element is not found in view
+                ((AndroidDriver) driver).executeScript("mobile: swipeGesture", ImmutableMap.of(
+                        "direction", "up",
+                        "percent", 0.8
+                ));
+            }
+        }
     }
 
 
-    public WebElement Account_Button() {
-        return driver.findElement(Account_Button);
-    }
-
-    public WebElement Account_ok() {
-        return driver.findElement(Account_ok);
-    }
-    public WebElement Setting() {
-        return driver.findElement(Setting);
-    }
-
-    public WebElement Notification() {
-        return driver.findElement(Notification);
-    }
-
-//    Then Click on High/Low Prices
-//    Then Click on Price Alerts
-//    Then Click on Earning Results
 
 
-    public WebElement High_Low() {
-        return driver.findElement(High_Low);
-    }
-    public WebElement Price_Alert() {
-        return driver.findElement(Price_alert);
-    }
-    public WebElement Earning() {
-        return driver.findElement(Earning);
+
+    public void scrollToAndClickExpandableLists() {
+        // Define the locator for the "Expandable Lists" element
+        By expandable = By.xpath("//android.widget.TextView[@content-desc='Expandable Lists']");
+
+        // Define an explicit wait with a timeout
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        // Loop to keep scrolling until the element is found and clicked
+        while (true) {
+            try {
+                // Wait until the "Expandable Lists" element is visible
+                WebElement expandableElement = wait.until(ExpectedConditions.visibilityOfElementLocated(expandable));
+
+                // Click the element if it's visible
+                expandableElement.click();
+                System.out.println("Found and clicked 'Expandable Lists'.");
+                break; // Exit the loop once clicked
+
+            } catch (Exception e) {
+                // Scroll down if the element is not visible
+                scrollDownS();
+            }
+        }
     }
 
-    public WebElement Security() {
-        return driver.findElement(Security);
-    }
-    public WebElement Autoplay() {
-        return driver.findElement(Autoplay);
-    }
-    public WebElement WIFI() {
-        return driver.findElement(WIFI);
-    }
-    public WebElement Audio_with_Screen() {
-        return driver.findElement(Audio_with_Screen);
-    }
-    public WebElement on_WIFI() {
-        return driver.findElement(on_WIFI);
-    }
-    public WebElement Audio_Chart() {
-        return driver.findElement(Audio_Chart);
-    }
-    public WebElement Off() {
-        return driver.findElement(Off);
-    }
-    public WebElement Dark_Mode() {
-        return driver.findElement(Dark_Mode);
-    }
-    public WebElement Dark_Mode_On() {
-        return driver.findElement(Dark_Mode_On);
-    }
-    public WebElement Regions_and_Curr() {
-        return driver.findElement(Regions_and_Curr);
+    private void scrollDownS() {
+        // Calculate swipe positions for scrolling
+        int startX = driver.manage().window().getSize().width / 2;
+        int startY = (int) (driver.manage().window().getSize().height * 0.8);
+        int endY = (int) (driver.manage().window().getSize().height * 0.3);
+
+        // Perform swipe action for scrolling down
+        new TouchAction<>((PerformsTouchActions) driver)
+                .press(PointOption.point(startX, startY))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500))) // Shortened wait for faster scrolls
+                .moveTo(PointOption.point(startX, endY))
+                .release()
+                .perform();
     }
 
 
-    public WebElement Market_Region() {
-        return driver.findElement(Market_Region);
+    public boolean scrollAndClick(By locator) {
+        return scrollToAndClickElement(locator);
     }
 
-    public WebElement Canada() {
-        return driver.findElement(Canada);
-    }
-    public WebElement Set_Market_Region() {
-        return driver.findElement(Set_Market_Region);
-    }
-    public WebElement Feedback() {
-        return driver.findElement(Feedback);
-    }
-    public WebElement Beta_Program() {
-        return driver.findElement(Beta_Program);
-    }
-    public WebElement Cancel() {
-        return driver.findElement(Cancel);
-    }
-    public WebElement News() {
-        return driver.findElement(News);
-    }
-    public WebElement First_News() {
-        return driver.findElement(First_News);
+
+    public WebElement longPressElement() {
+        // Find the element using the locator (assuming 'people' is your XPath or other locator string)
+        WebElement element = driver.findElement(people);  // Replace 'people' with your correct locator
+
+        // Perform long press action
+        new Actions(driver)
+                .clickAndHold(element)   // Click and hold the element (long press)
+                .pause(Duration.ofSeconds(2))  // Hold for 2 seconds
+                .release()                // Release the element
+                .perform();               // Execute the action
+
+        // Return the element after the long press action
+        return element;
     }
 
-}
+    public void scrollToExpandableAndClick() {
+        while (true) {
+            try {
+                // Check if the expandable element is visible and clickable
+                WebElement expandableElement = waitForExpandableToBeVisible(3); // Short timeout for quicker looping
+                if (expandableElement.isDisplayed()) {
+                    expandableElement.click();
+                    System.out.println("Expandable Lists option found and clicked.");
+                    break;
+                }
+            } catch (Exception e) {
+                // Scroll down if element is not yet visible
+                scrollDown();
+            }
+        }
+    }
+    private void scrollDown() {
+        if (driver instanceof AndroidDriver) {
+            ((AndroidDriver) driver).executeScript("mobile: swipeGesture", ImmutableMap.of(
+                    "direction", "up",
+                    "percent", 0.8
+            ));
+        }
+    }
+
+    public boolean clickBackButton() {
+        driver.navigate().back();
+        return true;
+    }
+
+    public boolean isElementVisible(By locator) {
+        try {
+            WebElement element = driver.findElement(locator);
+            return element.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+
+
+    // Method for drag and drop with hold
+    public void dragAndDropExample() {
+        // Safe cast to AndroidDriver
+        if (driver instanceof AndroidDriver androidDriver) {
+
+            By dragLocator = By.id("io.appium.android.apis:id/drag_dot_1");
+            By dropLocator = By.id("io.appium.android.apis:id/drag_dot_2");
+
+            if (isElementVisible(dragLocator) && isElementVisible(dropLocator)) {
+                WebElement dragElement = androidDriver.findElement(dragLocator);
+                WebElement dropElement = androidDriver.findElement(dropLocator);
+
+                // Perform drag and hold for 3 seconds
+                new TouchAction(androidDriver)
+                        .longPress(PointOption.point(dragElement.getLocation().getX(), dragElement.getLocation().getY()))
+                        .waitAction(waitOptions(ofMillis(300000)))  // Hold for 3 seconds
+                        .moveTo(PointOption.point(dropElement.getLocation().getX(), dropElement.getLocation().getY()))
+                        .release()
+                        .perform();
+            } else {
+                System.out.println("Either drag or drop element is not visible.");
+            }
+        } else {
+            System.out.println("Driver is not an instance of AndroidDriver.");
+        }
+    }
+
+    }
+
+
+

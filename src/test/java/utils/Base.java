@@ -4,6 +4,8 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Parameters;
+import pages.AdditionPage.TestingApp;
+
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
@@ -16,14 +18,12 @@ public class Base {
 
 //        startAppiumService(portNumber);
         DesiredCapabilities cap = new DesiredCapabilities();
-        cap.setCapability("deviceName", "Badhon_mobile");
-//        cap.setCapability("udid", "emulator-5554");
-        cap.setCapability("deviceVersion", "11");
+        cap.setCapability("deviceName", "Android");
         cap.setCapability("platformName", "Android");
-
-        cap.setCapability("appPackage", "com.yahoo.mobile.client.android.finance");
-        cap.setCapability("appActivity", "com.yahoo.mobile.client.android.finance.main.MainActivity");
-
+        cap.setCapability("automationName", "uiautomator2");
+        cap.setCapability("platformversion", "14");
+        cap.setCapability("appPackage", "io.appium.android.apis");
+        cap.setCapability("appActivity", "io.appium.android.apis.ApiDemos");
         URL url = new URL("http://127.0.0.1:4723/wd/hub");
         driver = new AppiumDriver(url, cap);
         Thread.sleep(5000);
