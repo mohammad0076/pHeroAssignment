@@ -149,3 +149,19 @@ This automation strategy with **Cucumber and POM** supports maintainable, readab
 
 [🎥 Demonstration Video](https://github.com/mohammad0076/pHeroAssignment/issues/1)
 
+
+
+## Expected Output or Behavior
+
+- **App Launch**: The ApiDemos-debug.apk will launch successfully on the emulator.
+- **Views Button**: The "Views" button is visible and clickable, navigating to the next screen.
+- **Expandable Lists**: The app scrolls to and selects "Expandable Lists."
+- **Custom Adapter**: Click on "Custom Adapter," navigating to the next screen.
+- **Long Press on People Names**: A long press on "People Names" triggers a related action.
+- **Simple Action**: The "Simple Action" becomes visible.
+- **Back Button**: Clicking the "Back" button returns to the previous screen.
+- **Drag & Drop**: Scroll to and click "Drag & Drop," then drag the first circle onto the second.
+
+The app will perform all interactions smoothly, with expected transitions and actions.
+
+
